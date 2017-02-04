@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bubble Sort - Reez Patel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script src="./../helper/processing.min.js"></script>
+        <script type="text/processing" data-processing-target="mycanvas">
+        
+        int height = 500;
+int width = 400;
+
+int barMaxHeight = 400;
+int barWidth = 10;
+int offSet = 10;
+int num = (int)(height/(offSet + barWidth))-2;
+int[] inputs = new int[num];
+int ratio;
+
+int motionX;
+int motionFactor = 3;
+
+int barI = 0;
+int barJ = 0;
+
+boolean continueSort = true;
+
+// Setup the Processing Canvas
+void setup(){
+  frameRate(5);
+  size(height,width);
+
+  for(int i=0;i<num;i++) {
+    inputs[i] = random(5, num-5);
+  }
+  console.log(inputs);
+  ratio = max(inputs);
+}
+
+// Main draw loop
+void draw(){
+  background(0,0,0); 
+  if(continueSort) {
+    sort();
+    motionX = barWidth+offSet;
+  } else {
+    //Move Rectangle
+    moveReactangle();
+  }              
+}
+
+void renderBars() {
+  int barX = offSet;
+  for(int i=0;i<inputs.length;i++) {
+    int barHeight = (int)getHeight(inputs[i]);
+    int barY = height - barHeight - offSet;
+    barX = barX + offSet + barWidth;
+    if(i === barJ-1) {
+      fill(255,0,0);
+    }else if(barJ === i) {
+      fill(0,255,0);
+    }else if(i < barI) {
+        fill(255,255,0);
+      rect(barX,barY,barWidth,barHeight);
+    }else {
+      fill(255);
+    } 
+    rect(barX,barY,barWidth,barHeight);
+  }
+}
+
+
+double getHeight(int input) {
+  return (barMaxHeight*input)/(float)ratio;
+}
+
+void sort() {
+  if(barI == inputs.length) {
+      exit();
+  }
+
+  if(barJ > 0) {
+    if(inputs[barJ-1] > inputs[barJ]) {
+        continueSort = false;
+    }else{
+        barJ--;
+    }
+  }else {
+      barI++;
+      barJ = barI;
+  }
+
+   
+  
+  renderBars(); 
+}
+
+void moveReactangle() {
+  int barX = offSet;
+  for(int i=0;i<inputs.length;i++) {
+    int barHeight = (int)getHeight(inputs[i]);
+    int barY = height - barHeight - offSet;
+    barX = barX + offSet + barWidth;
+    if(i === barJ-1) {
+      fill(0,255,0);
+      
+      //Move Right
+      int x = (barX + offSet + barWidth)- motionX;
+      rect(x,barY,barWidth,barHeight);
+    }else if(barJ === i) {
+      fill(255,0,0);
+
+      //Move Left
+      int x = barX - (offSet + barWidth - motionX);
+      rect(x,barY,barWidth,barHeight);
+    }else if(i < barI) {
+        fill(255,255,0);
+      rect(barX,barY,barWidth,barHeight);
+    }else {
+      fill(255);
+      rect(barX,barY,barWidth,barHeight);
+    }
+  }
+  motionX = motionX-motionFactor;
+  if(motionX < 0) {
+    continueSort = true;
+    int temp = inputs[barJ-1];
+    inputs[barJ-1] = inputs[barJ];
+    inputs[barJ] = temp;
+    barJ--;
+  }
+}
+        </script>
+        <canvas id="mycanvas"></canvas>
+    
+    </body>
+</html>

@@ -36,7 +36,7 @@ int main() {
     clock_t s,e;
     int myArray[LENGHT];
     for(int i=0;i<LENGHT;i++) {
-        myArray[i] = rand()%1000;
+        myArray[i] = i;
     }
     int key;
     cout << "[-1 to exit]";

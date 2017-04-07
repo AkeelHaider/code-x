@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib.h>
+#include <ctime>
 #include <set>
 using namespace std;
 #define LEN 15
@@ -8,6 +10,8 @@ int main() {
     for(int i=0;i<LEN;i++) {
         person[i] = rand()%100;
     }
+    
+    srand(time(NULL));
 
     cout << "Preparing List...\n" << endl;
     cout << "People \t\t Quality" << endl;

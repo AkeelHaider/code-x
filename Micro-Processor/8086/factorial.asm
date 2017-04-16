@@ -1,0 +1,19 @@
+DATA SEGMENT
+    X DW 04H
+DATA ENDS
+
+CODE SEGMENT
+START:
+ASSUME CS:CODE, DS:DATA
+    MOV AX, DATA
+    MOV DS, AX
+    MOV AX, 01H
+    MOV CX, X   
+    
+    MYLOOP: 
+        MUL CX
+        DEC CX
+    JNZ MYLOOP
+     
+ENDS CODE
+END START

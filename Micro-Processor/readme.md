@@ -66,6 +66,7 @@
 1. RR A-> Rotate A right (without carry)
 1. RRC A-> Rotate A right (with carry) 
 1. XRL A, B -> Store value of A XOR B in A
+1. CPL A -> Store Complement of A in A
 
 ### Data Transfer Instruction
 1. MOV A, B -> COPY value of B in A

@@ -17,5 +17,11 @@ START:
     MOV BX, N2
     /* Add AX with BX and store the result in AX */
     ADD AX,BX  
+    /* Subrtarct AX with BX and store the result in AX */
+    SUB AX,BX  
+    /* Multiply AX with BX and store the result in AX */
+    MUL BX  
+    /* Divide AX with BX and store the result in AX */
+    DIV BX  
 CODE ENDS
 END START

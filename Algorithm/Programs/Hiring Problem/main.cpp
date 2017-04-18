@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdlib.h>
+#include <cstdlib>
 #include <ctime>
 #include <set>
 using namespace std;
@@ -29,6 +29,7 @@ int main() {
     while(count != 15) {
         int id = rand()%LEN;
         if(s.end() == s.find(id)) {
+            count++;
             if(person[id] >= currentTrushHold) {
                 currentTrushHold = person[id];
                 cout << person[id] << " ";

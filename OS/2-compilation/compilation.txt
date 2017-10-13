@@ -1,0 +1,42 @@
+FUNDAMENTALS OF COMPILATION
+----------------------------
+
+4 Stages of Compilation
+    1. PreProcessing
+    2. Compilation
+    3. Assembly
+    4. Linking
+
+
+STEPS
+------
+1. Write a Hello World C Program.
+2. Save the file as hello.c 
+3. Give Command: gcc -Wall --save-temps hello.c -o hello 
+4. This will generate 4 files
+    hello hello.i hello.s hello.o
+
+1. PRE PROCESSING
+------------------
+* Command: gcc -Wall -E hello.c
+* File: hello.i 
+* Replaces the Macro from all the places.
+* Comments are removed
+* Includes dircetives are replaced with orignal code
+
+2. COMPILING
+---------------
+* File: hello.s
+* Converts the source file to assembly code.
+
+3. ASSEMBLY
+-------------
+* File: hello.of
+* Assembly file is taken and converted to obejct code.
+* At this stage the function calls such as printf() is not resolved.
+
+4. LINKING
+------------
+* File: hello
+* The defination of function calls like printf() is resolved.
+* Adds extra code to the source code, which helps in starting and finishing of the program.

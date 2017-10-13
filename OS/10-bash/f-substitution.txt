@@ -1,0 +1,15 @@
+LS `COMMAND` -> Excute command and places the output
+------------------------------------------------------
+reezpatel@reezpatel-fedora-pc Demo]$ ls `pwd`
+is replaced with
+reezpatel@reezpatel-fedora-pc Demo]$ ls /home/reezpatel/Demo
+then, result
+no.sh temp1.txt  temp2.txt  temp3.txt  temp4.txt  temp.txt   yes.sh 
+
+LS &COMMAND - Execute ls and start  COMMAND
+-----------------------------------------------
+reezpatel@reezpatel-fedora-pc Demo]$ ls &pwd
+[1] 29365
+/home/reezpatel/Demo
+no.sh  temp1.txt  temp2.txt  temp3.txt  temp4.txt  temp.txt  yes.sh
+[1]+  Done                    ls --color=auto

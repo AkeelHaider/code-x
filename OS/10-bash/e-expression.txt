@@ -1,0 +1,24 @@
+LS - List Files and Folder in a Directory
+-----------------------------------------
+reezpatel@reezpatel-fedora-pc Demo]$ ls
+no.sh  temp1.txt  temp2.txt  temp3.txt  temp4.txt  temp.txt  yes.sh
+
+
+LS *.sh - Search the file ending with .sh
+-------------------------------------------
+reezpatel@reezpatel-fedora-pc Demo]$ ls *.sh
+no.sh  yes.sh
+
+LS temp?.txt - List Files which begins with temp
+-------------------------------------------------
+reezpatel@reezpatel-fedora-pc Demo]$ ls temp?.txt
+temp1.txt  temp2.txt  temp3.txt  temp4.txt
+
+
+LS temp[1-3] - List File with begins with temp, 
+               followed by any no. between 1 and 3
+----------------------------------------------------
+reezpatel@reezpatel-fedora-pc Demo]$ ls temp[1-3].txt
+temp1.txt  temp2.txt  temp3.txt
+
+

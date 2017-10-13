@@ -1,0 +1,72 @@
+LINUX BOOT PROCESS
+-------------------
+
+STEPS
+--------
+BIOS --> MBR --> GRUB --> KERNEL --> INIT --> RUNLEVEL
+
+1. BIOS
+--------
+* Full form => Basic Input Output System.
+* Checks integrity of the system before booting.
+* Looks for the bootable disks, amd load it to the memeory.
+* The control now transfers to MBR.
+
+2. MBR
+-------
+* Full Form => Master Boot Record
+* MBR is located in the first sector of the bootable drive.
+* MBR is less that 1/2 KB. It contains 3 parts:
+	1. Primary Boot
+	2. Partition Table 
+	3. MBR Validation
+* It contains information about GRUB. 
+* It loads the GRUB and give control to it.
+
+3. GRUB
+--------
+* Full Form => Grand Unified BootLoader
+* It displays Splash Screen, if not interrupted it loads kernel.
+* GRUB configuration file is present in /etc/grub/grub.config
+* GRUB loads the kernel in 3 stages:
+	Stage 1. Stages the loading process of the complex Operating System.
+	Stage 1.5. Present in space 30 KB after MBR. Simluate a /boot partition for booting.
+	Stage 2. Loads the kernel, whose information is present at /etc/grub/grub.conf.
+
+4. KERNEL
+----------
+* It is responsible for the working of Operating System.
+* Mount ROOT file system, present as "root=" in grub.conf
+* Execute /sbin/init
+* Pid for kernel is 1
+* intrd (Inital Ram Disk), is used as temporary root file system.
+* It helps kernel to recognize the devices and disks connected to system.
+* Stage of Loading Kernel:
+	1. Configures H/W and Allocates Memory.
+	2. Uncompress initrd image and mounts as root file system.
+	3. Looks for the Hard Drives.
+	4. Unmounts initrd.
+	5. Mount the /root partition.
+	6. Run init process. 
+
+5. INIT
+--------
+* Looks at /etc/inittab and decide Linux Run Level
+* Run Levels:
+	0 - Hault
+	1 - Single User Mode
+	2 - Multiuser Mode, no NFS (Network File Server)
+	3 - Full Multiuser Mode
+	4 - Unused
+	5 - X11 (GUI)
+	6 - Reboot
+* Default Run Level - 3 or 5
+
+6. RUN LEVEL PROGRAMS
+----------------------
+* Set of services are started during bootup.
+* Programs located at /etc/rc.d/rc<run lvl>.d is executed depending on the run level.
+* Programs starts with S are used during startup.
+* Programs starts with K are used during kill.
+* Numbers after K and S is the sequence in which each program is executed.
+

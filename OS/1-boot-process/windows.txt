@@ -1,0 +1,48 @@
+WINDOWS BOOT PROCESS
+--------------------
+
+STEPS
+-----
+BIOS(POST -> MBR) --> Boot Loader --> Boot Files --> Kernel --> Services
+
+1. BIOS
+--------
+A. POST
+    * Full Form => Power On Self Test
+    * Checks all the hardware devices like RAM, HDD.
+B. MBR
+    * Same as for Linux
+
+2. BOOT LOADER
+---------------
+A. STAGE 1
+    * Prepares of Loading of Boot Files
+B. STAGE 2
+    * Loads up Boot Files to memory.
+
+3. BOOT FILES
+--------------
+A. NTDLR
+    * Full Form => NT Loader
+    * Path => C:/Windows/i386/NTDLR
+B. boot.ini
+    * Contains configuration file from NTDLR
+    * While loading kernel in windows, we can't pass arguments, hence boot.ini is used.
+C. NTDETECT.COM
+    * Detects H/W and passes it to NTDLR.
+    * Generate a new HW key for each HW during startup.
+    * HW key is used to indentify each element.
+
+4. KERNEL
+----------
+* Kernal Path => C:/Windows/System32/ntoskrnal.exe
+* HAL (HW Abstraction Layer) library files help kernal to interact with HW.
+* Drivers are loader from C:/Windows/System32/config/System32
+* Kernel is loader to primary memory
+
+5. Services
+------------
+* A set od services is started as windows laods.
+* Last service to be loaded is winlogon.exe
+* It calls the masgina.dll library (Microsoft Graphics Indetification and Authentication Authority)
+* MASGINA verifies the username and password.
